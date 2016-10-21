@@ -11,13 +11,21 @@
   font-size: 5pt;
 }
 
-.vertPadding {
-
+.text_white {
+  color: white;
 }
 
 .vertMargin {
   margin-top: 15px;
   margin-bottom: 5px;
+}
+
+.jumbotron {
+  background: linear-gradient(black, lightblue, black);
+}
+
+.list-group-item-text {
+  background-color: rgba(224,255,255, 0.9);
 }
 
 html {
@@ -26,7 +34,15 @@ html {
 }
 
 body {
-  background: linear-gradient(blue, black);
+  background: linear-gradient(black, black, darkblue);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.well_parent {
+  background: linear-gradient(black, lightblue, black);
+}
+
+.well_child {
+  background-color: rgba(224,255,255, 0.9);
 }
