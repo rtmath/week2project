@@ -37,9 +37,9 @@ function evalUserInput (total) {
 $(document).ready(function() {
   $('#descriptionButton').click(function() {
     //Commenting/Uncommenting this code is to quickly display result to test layout of the result screen - directions are below to restore original functionality
-    // $('#questionnaire').fadeIn(600) //<--uncomment this line of code to restore functionality
-    $('#questionnaire').hide(); //<-- comment these lines of code to restore functionality
-    $('#hide_css').fadeIn(800); //<--
+    $('#questionnaire').fadeIn(600) //<--uncomment this line of code to restore functionality
+    //$('#questionnaire').hide(); //<-- comment these lines of code to restore functionality
+    //$('#hide_css').fadeIn(800); //<--
   });
 
   $('#questionnaire').submit(function(event) {
