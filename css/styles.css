@@ -47,10 +47,18 @@ body {
   padding: 2px;
 }
 
-#jsShow{
+#cSharpShow{
+  display: none;
+}
+
+#cssShow{
   display: none;
 }
 
 #questionnaire {
+  display: none;
+}
+
+#rubyShow{
   display: none;
 }
