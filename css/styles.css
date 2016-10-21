@@ -43,22 +43,37 @@ body {
 }
 
 .width_min {
-  min-width: 250px;
+  min-width: 320px;
   padding: 2px;
 }
 
-#cSharpShow{
+#hide_cSharp{
   display: none;
 }
 
-#cssShow{
+#hide_css{
   display: none;
+}
+
+#hide_ruby{
+  display: none;
+}
+
+#img_csharp {
+  width: 300px;
+  height: 300px;
+}
+
+#img_ruby {
+  width: 300px;
+  height: 300px;
+}
+
+#img_css {
+  width: 300px;
+  height: 300px;
 }
 
 #questionnaire {
-  display: none;
-}
-
-#rubyShow{
   display: none;
 }

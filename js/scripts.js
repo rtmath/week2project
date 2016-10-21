@@ -24,19 +24,22 @@ function validateInput(answer1, answer2, answer3, answer4, answer5) {
 
 function evalUserInput (total) {
   if (total <= 7) {
-    return "#cssShow";
+    return "#hide_css";
   }
   if (total <= 18 && total > 7) {
-    return "#rubyShow";
+    return "#hide_ruby";
   }
   if (total <= 23 && total > 18) {
-    return "#cSharpShow";
+    return "#hide_cSharp";
   }
 }
 
 $(document).ready(function() {
   $('#descriptionButton').click(function() {
-    $('#questionnaire').fadeIn(600)
+    //Commenting/Uncommenting this code is to quickly display result to test layout of the result screen - directions are below to restore original functionality
+    // $('#questionnaire').fadeIn(600) //<--uncomment this line of code to restore functionality
+    $('#questionnaire').hide(); //<-- comment these lines of code to restore functionality
+    $('#hide_css').fadeIn(800); //<--
   });
 
   $('#questionnaire').submit(function(event) {
