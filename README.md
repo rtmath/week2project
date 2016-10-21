@@ -21,7 +21,7 @@ _Frameworks_
 
 ### Website Link
 
-[Github Link](http://rtmath.github.com/week2project)
+[Github Link](http://rtmath.github.io/week2project)
 
 ### License information
 
