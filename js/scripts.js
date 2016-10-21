@@ -1,11 +1,22 @@
-var callFadeQueue = function (result) {
+var toResultQueue = function (result) {
   var myQueue = { queue: 'manageFading', duration: 'slow' };
         $({})
             .queue(function (next) {
                 $('.hideRow').fadeOut('slow', next);
             })
             .queue(function (next) {
-                $(result).fadeIn(2000, next);
+                $(result).fadeIn(1000, next);
+            });
+}
+
+var toHomeQueue = function (result) {
+  var myQueue = { queue: 'manageFading', duration: 'slow' };
+        $({})
+            .queue(function (next) {
+                $(result).fadeOut(1000, next);
+            })
+            .queue(function (next) {
+                $('.hideRow').fadeIn('slow', next);
             });
 }
 
@@ -23,6 +34,7 @@ function validateInput(answer1, answer2, answer3, answer4, answer5) {
 } <!--TODO:Use IsNaN instead of 'a === a' format-->
 
 function evalUserInput (total) {
+  $('#hide_returnButton').show();
   if (total <= 7) {
     return "#hide_css";
   }
@@ -35,8 +47,12 @@ function evalUserInput (total) {
 }
 
 $(document).ready(function() {
+
+  var DISPLAYED = "";
+
   $('#descriptionButton').click(function() {
     //Commenting/Uncommenting this code is to quickly display result to test layout of the result screen - directions are below to restore original functionality
+    $('#qRow').fadeIn(600)
     $('#questionnaire').fadeIn(600) //<--uncomment this line of code to restore functionality
     //$('#questionnaire').hide(); //<-- comment these lines of code to restore functionality
     //$('#hide_css').fadeIn(800); //<--
@@ -50,15 +66,22 @@ $(document).ready(function() {
     var answer4 = parseInt($('select[name=question4]').val());
     var answer5 = parseInt($('select[name=question5]').val());
     var total = sum(answer1, answer2, answer3, answer4, answer5)
-    // callFadeQueue();
+
     if (validateInput(answer1, answer2, answer3, answer4, answer5)===true) {
       console.log('SUCCESS!');
-      console.log(evalUserInput(total));
-      callFadeQueue(evalUserInput(total));
+      DISPLAYED = evalUserInput(total);
+      toResultQueue(evalUserInput(total));
+      // console.log(displayed);
     } else {
       console.log('FAILURE!');
     }
 
     // console.log(answer1, answer2, answer3, answer4, answer5);
   });
+
+  $('#returnHome').click(function(event) {
+    event.preventDefault();
+    toHomeQueue(DISPLAYED);
+    });
+
 });
