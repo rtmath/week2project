@@ -1,25 +1,3 @@
-var toResultQueue = function (result) {
-  var myQueue = { queue: 'manageFading', duration: 'slow' };
-        $({})
-            .queue(function (next) {
-                $('.hideRow').fadeOut('slow', next);
-            })
-            .queue(function (next) {
-                $(result).fadeIn(1000, next);
-            });
-}
-
-var toHomeQueue = function (result) {
-  var myQueue = { queue: 'manageFading', duration: 'slow' };
-        $({})
-            .queue(function (next) {
-                $(result).fadeOut(1000, next);
-            })
-            .queue(function (next) {
-                $('.hideRow').fadeIn('slow', next);
-            });
-}
-
 function sum(num1, num2, num3, num4, num5) {
   return num1 + num2 + num3 + num4 + num5;
 }
@@ -34,11 +12,10 @@ function validateInput(answer1, answer2, answer3, answer4, answer5) {
 } <!--TODO:Use IsNaN instead of 'a === a' format-->
 
 function evalUserInput (total) {
-  $('#hide_returnButton').show();
   if (total <= 7) {
     return "#hide_css";
   }
-  if (total <= 18 && total > 7) {
+  if (total <= 16 && total > 7) {
     return "#hide_ruby";
   }
   if (total <= 23 && total > 18) {
@@ -51,11 +28,11 @@ $(document).ready(function() {
   var DISPLAYED = "";
 
   $('#descriptionButton').click(function() {
-    //Commenting/Uncommenting this code is to quickly display result to test layout of the result screen - directions are below to restore original functionality
-    $('#qRow').fadeIn(600)
-    $('#questionnaire').fadeIn(600) //<--uncomment this line of code to restore functionality
-    //$('#questionnaire').hide(); //<-- comment these lines of code to restore functionality
-    //$('#hide_css').fadeIn(800); //<--
+    $('#descriptionText').fadeOut();
+    $('#descriptionButton').fadeOut(function() {
+      $('#qRow').fadeIn();
+      $('#questionnaire').fadeIn();
+    });
   });
 
   $('#questionnaire').submit(function(event) {
@@ -66,22 +43,25 @@ $(document).ready(function() {
     var answer4 = parseInt($('select[name=question4]').val());
     var answer5 = parseInt($('select[name=question5]').val());
     var total = sum(answer1, answer2, answer3, answer4, answer5)
-
+    console.log(total);
     if (validateInput(answer1, answer2, answer3, answer4, answer5)===true) {
-      console.log('SUCCESS!');
       DISPLAYED = evalUserInput(total);
-      toResultQueue(evalUserInput(total));
-      // console.log(displayed);
+      $('.hideRow').fadeOut('slow', function() {
+          $(DISPLAYED).fadeIn();
+          $("#hide_returnButton").fadeIn();
+      })
     } else {
-      console.log('FAILURE!');
+      alert('FAILURE!');
     }
 
     // console.log(answer1, answer2, answer3, answer4, answer5);
   });
 
-  $('#returnHome').click(function(event) {
+  $('#returnHome').submit(function(event) {
     event.preventDefault();
-    toHomeQueue(DISPLAYED);
+    $(DISPLAYED).fadeOut('slow');
+    $("#hide_returnButton").fadeOut('slow', function() {
+        $('.hideRow').fadeIn();
+      })
     });
-
 });
