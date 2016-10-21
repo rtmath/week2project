@@ -47,6 +47,10 @@ body {
   padding: 2px;
 }
 
+#jsShow{
+  display: none;
+}
+
 #questionnaire {
   display: none;
 }
