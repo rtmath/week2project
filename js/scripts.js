@@ -18,7 +18,7 @@ function evalUserInput (total) {
   if (total <= 16 && total > 7) {
     return "#hide_ruby";
   }
-  if (total <= 23 && total > 18) {
+  if (total <= 23 && total > 17) {
     return "#hide_cSharp";
   }
 }
